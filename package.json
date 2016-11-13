@@ -1,0 +1,15 @@
+{
+  "name": "nitro",
+  "version": "1.0.0",
+  "description": "Nitro Twitter sample app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rafal Janicki <bloorq@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cli": "^1.2.2"
+  }
+}
