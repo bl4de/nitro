@@ -23,7 +23,10 @@ function init() {
  * onclick handler for search button
  */
 function searchBtnClickHandler() {
-    fetchTweets(usernameInput.value.trim())
+    let username = usernameInput.value.trim()
+    if (username) {
+        fetchTweets()
+    }
 }
 
 /**
@@ -65,10 +68,11 @@ function parseTweets(tweets = []) {
     }
 }
 
+
 /**
  * Fetching tweets posted by username
  * 
- * @param {string} [username=DEFAULT_USERNAME]
+ * @param {string} username Twitter username to search tweets for
  */
 function fetchTweets(username = DEFAULT_USERNAME) {
     //tbd
