@@ -1,19 +1,58 @@
 'use strict'
 
+// element holds all tweets
 const CONTENT = document.getElementById('content')
+// input field for Twitter username
+const usernameInput = document.getElementById('username')
+// search button
+const searchBtn = document.getElementById('search')
+// default Twitter username to show tweets
 const DEFAULT_USERNAME = '@NitroHQ'
+
+
+
+/**
+ * Initialize application
+ */
+function init() {
+    searchBtn.addEventListener('click', searchBtnClickHandler)
+    fetchTweets()
+}
+
+/**
+ * onclick handler for search button
+ */
+function searchBtnClickHandler() {
+    fetchTweets(usernameInput.value.trim())
+}
 
 /**
  * Creates single tweet element and appends to content 
  * 
  * @param {object} tweet
+ * @param {HTMLElement} parentElement parent element for tweets
  */
-function appendTwit(tweet) {
+function appendTweet(tweet) {
     let tweet_content = document.createElement('div')
     tweet_content.classList = 'tweet-content'
-    tweet_content.textContent = `user: ${tweet.user.screen_name} - ${tweet.text}`
+
+    tweet_content.innerHTML = `
+        <h5>\@${tweet.user.screen_name}</h5>
+        <p>${tweet.text}</p>
+    `
+
     CONTENT.appendChild(tweet_content)
 }
+
+/**
+ * clears section with tweets; removes all child elements
+ */
+function clearTweets() {
+    while (CONTENT.firstChild) {
+        CONTENT.removeChild(CONTENT.firstChild)
+    }
+}
+
 
 /**
  * Process every tweet in returned array of user's tweets
@@ -22,7 +61,7 @@ function appendTwit(tweet) {
  */
 function parseTweets(tweets = []) {
     if (tweets.length > 0) {
-        tweets.forEach(appendTwit)
+        tweets.forEach(appendTweet)
     }
 }
 
@@ -33,11 +72,12 @@ function parseTweets(tweets = []) {
  */
 function fetchTweets(username = DEFAULT_USERNAME) {
     //tbd
+
+    // clear previous tweets
+    clearTweets()
+
+    // fetch new tweets
     fetch('../dev/sample.json').then(result => {
         result.json().then(tweets => parseTweets(tweets.statuses))
     })
 }
-
-
-// run app
-fetchTweets()
