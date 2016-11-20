@@ -4,7 +4,7 @@
   "description": "Nitro Twitter application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cd tests; casperjs casper-tests.js",
     "start": "server.js"
   },
   "author": "Rafal Janicki <bloorq@gmail.com>",

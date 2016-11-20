@@ -20,6 +20,9 @@ const NitroTwitterApp = {
      */
     init() {
         searchBtn.addEventListener('click', this.searchBtnClickHandler.bind(this))
+        usernameInput.addEventListener('focus', () => {
+            usernameInput.value = ''
+        })
         this.fetchTweets()
     },
 
@@ -41,13 +44,18 @@ const NitroTwitterApp = {
      */
     appendTweet(tweet) {
         let tweetContent = document.createElement('div')
-        tweetContent.classList = 'tweet-content'
-
+        tweetContent.classList = 'tweet-content bg-info'
         tweetContent.innerHTML = `
         <h5>\@${tweet.user.screen_name}</h5>
-        <p>${tweet.text}</p>
+        <p>${tweet.text}
+            <br />
+            <span class="created-at pull-right">${tweet.created_at}</span>
+        </p>
         `
-
+        // normalize username in input field
+        if (usernameInput.value.trim() !== tweet.user.screen_name) {
+            usernameInput.value = `@${tweet.user.screen_name}`
+        }
         CONTENT.appendChild(tweetContent)
     },
 
@@ -83,7 +91,7 @@ const NitroTwitterApp = {
     fetchTweets(username = DEFAULT_USERNAME) {
         this.clearTweets()
         // fetch new tweets
-        fetch(`${BASE_URL}/fetch/` + username)
+        fetch(`${BASE_URL}/fetch/${username}`)
             .then(result => {
                 result.json()
                     .then(tweets => this.parseTweets(tweets, username))

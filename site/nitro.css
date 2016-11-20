@@ -1,14 +1,35 @@
+body {
+    background-color: #55acee;
+}
+
+main {
+    margin:20px;
+}
+
+header,
+footer {
+    width: 100%;
+    height: 6vh;
+    margin: 0;
+    padding:2px 0px 2px 22px;
+}
+
 .tweet-content {
     margin:12px 3px 4px 3px;
-    padding: 5px;
-
-    border:1px solid #a6a6a6;
-    border-radius: 3px;
+    padding: 5px 5px 16px 5px;
+    border-radius: 7px;
 }
 
 .tweet-content p {
     text-indent: 20px;
-    line-height: 4vh;
+    font-size: 1.8vh;
+    line-height: 3vh;
+}
+
+.tweet-content span.created-at {
+    font-size: 1.6vh;
+    color:#7e7e7e;
+    display: inline-block;
 }
 
 .username {
