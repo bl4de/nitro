@@ -73,18 +73,9 @@ function parseTweets(tweets = []) {
  * @param {string} username Twitter username to search tweets for
  */
 function fetchTweets(username = DEFAULT_USERNAME) {
-    //tbd
     clearTweets()
-
-
     // fetch new tweets
     fetch('/fetch/' + username).then(result => {
-        result.json().then(tweets => parseTweets(tweets.statuses))
+        result.json().then(tweets => parseTweets(tweets))
     })
-
-    // // fetch new tweets
-    // fetch('../dev/sample.json').then(result => {
-    //     result.json().then(tweets => parseTweets(tweets.statuses))
-    // })
-
 }
