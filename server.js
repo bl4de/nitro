@@ -11,7 +11,7 @@
 const express = require('express')
 
 // my helper module
-const twitterApiHelper = require('./twitterApiHelper').TwitterApiHelper
+const twitterApiHelper = require('./modules/twitterApiHelper').TwitterApiHelper
 
 // some const define
 const app = express()
