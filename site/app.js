@@ -9,30 +9,6 @@ const searchBtn = document.getElementById('search')
 // default Twitter username to show tweets
 const DEFAULT_USERNAME = '@NitroHQ'
 
-// Twitter API keys
-const CONSUMER_KEY = 'XACJWHHw5g8ZzHHKhd53PBRmZ'
-const CONSUMER_SECRET = 'r6genB8ylAeoNcyFSxSqDkafa1WXyyhitkkZQSKugeyTOtD1kw'
-
-function getBearerToken() {
-    const content = 'grant_type=client_credentials'
-    const authToken = 'Basic ' + Base64.encode(CONSUMER_KEY + ':' + CONSUMER_SECRET)
-    const contentType = 'application/x-www-form-urlencoded;charset=UTF-8'
-
-    const reqSettings = {
-        'method': 'POST',
-        'body': content,
-        'mode': 'no-cors',
-        'credentials': 'include',
-        'headers': new Headers({
-            'Content-Type': contentType,
-            'Authorization': authToken,
-            'Content-Length': content.length.toString()
-        })
-    }
-
-    return fetch('https://api.twitter.com/oauth2/token', reqSettings)
-}
-
 /**
  * Initialize application
  */
@@ -47,7 +23,7 @@ function init() {
 function searchBtnClickHandler() {
     let username = usernameInput.value.trim()
     if (username) {
-        fetchTweets()
+        fetchTweets(username)
     }
 }
 
@@ -98,15 +74,17 @@ function parseTweets(tweets = []) {
  */
 function fetchTweets(username = DEFAULT_USERNAME) {
     //tbd
-    getBearerToken().then(response => {
-        console.log(response)
-        // clear previous tweets
-        clearTweets()
+    clearTweets()
 
-        // fetch new tweets
-        fetch('../dev/sample.json').then(result => {
-            result.json().then(tweets => parseTweets(tweets.statuses))
-        })
+
+    // fetch new tweets
+    fetch('/fetch/' + username).then(result => {
+        result.json().then(tweets => parseTweets(tweets.statuses))
     })
+
+    // // fetch new tweets
+    // fetch('../dev/sample.json').then(result => {
+    //     result.json().then(tweets => parseTweets(tweets.statuses))
+    // })
 
 }

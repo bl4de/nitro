@@ -1,13 +1,29 @@
+// importing modules
 const express = require('express')
-const app = express()
-const port = 21001
 
+// my helper module
+const helper = require('./helper')
+
+// some const define
+const app = express()
+const PORT = 21001
+
+// path to static resources
 app.use(express.static('site'))
 
-app.listen(port, (err) => {
-    if (err) {
-        return console.log('something bad happened', err)
-    }
+// get user's Twitter stream
+app.get('/fetch/:handle', (req, resp) => {
+    const stream = helper.fetchUserTweets(req.params.handle)
+    stream.then(tweets => {
+        resp.send(tweets)
+    })
+})
 
-    console.log(`server is listening on ${port}`)
+
+// let's go!
+app.listen(PORT, (err) => {
+    if (err) {
+        return console.log(`Server cannot run on port ${PORT} because of ${err.toString()}; aborting :( `)
+    }
+    console.log(`Nitro app started successfully. Server is listening on ${PORT}`)
 })
