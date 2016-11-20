@@ -9,6 +9,9 @@ const searchBtn = document.getElementById('search')
 // default Twitter username to show tweets
 const DEFAULT_USERNAME = '@NitroHQ'
 
+// base url
+const BASE_URL = 'http://127.0.0.1:21001'
+
 // Nitro Twitter App - singleton object as there's no need to create more than one instance
 // using eg. constructor function pattern
 const NitroTwitterApp = {
@@ -16,8 +19,8 @@ const NitroTwitterApp = {
      * Initialize application
      */
     init() {
-        searchBtn.addEventListener('click', searchBtnClickHandler)
-        fetchTweets()
+        searchBtn.addEventListener('click', this.searchBtnClickHandler.bind(this))
+        this.fetchTweets()
     },
 
     /**
@@ -26,7 +29,7 @@ const NitroTwitterApp = {
     searchBtnClickHandler() {
         let username = usernameInput.value.trim()
         if (username) {
-            fetchTweets(username)
+            this.fetchTweets(username)
         }
     },
 
@@ -63,9 +66,11 @@ const NitroTwitterApp = {
      * 
      * @param {any} [tweets=[]]
      */
-    parseTweets(tweets = []) {
+    parseTweets(tweets = [], username) {
         if (tweets.length > 0) {
-            tweets.forEach(appendTweet)
+            tweets.forEach(this.appendTweet)
+        } else {
+            CONTENT.innerHTML = `<h5 class="no-tweets-found">No Tweets found, maybe <span class="username">${username}</span> does not exists?`
         }
     },
 
@@ -75,15 +80,18 @@ const NitroTwitterApp = {
      * 
      * @param {string} username Twitter username to search tweets for
      */
-    etchTweets(username = DEFAULT_USERNAME) {
-        clearTweets()
+    fetchTweets(username = DEFAULT_USERNAME) {
+        this.clearTweets()
         // fetch new tweets
-        fetch('/fetch/' + username).then(result => {
-            result.json()
-                .then(tweets => parseTweets(tweets))
-                .catch(err => {
-                    console.log(err)
-                })
-        })
+        fetch(`${BASE_URL}/fetch/` + username)
+            .then(result => {
+                result.json()
+                    .then(tweets => this.parseTweets(tweets, username))
+                    .catch(err => {
+                        console.log(err)
+                    })
+            }).catch(err => {
+                console.log(err)
+            })
     }
 }
