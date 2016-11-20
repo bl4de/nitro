@@ -4,12 +4,14 @@
  * 
  * I've used Express framework here'
  */
+// Rafal 'bl4de' Janicki | for @Nitro
+
 
 // importing modules
 const express = require('express')
 
 // my helper module
-const helper = require('./helper').Helper
+const twitterApiHelper = require('./twitterApiHelper').TwitterApiHelper
 
 // some const define
 const app = express()
@@ -20,7 +22,7 @@ app.use(express.static('site'))
 
 // GET user's Twitter stream
 app.get('/fetch/:handle', (req, resp) => {
-    helper.fetchUserTweets(req.params.handle).then(tweets => {
+    twitterApiHelper.fetchUserTweets(req.params.handle).then(tweets => {
         resp.send(tweets)
     })
 })
