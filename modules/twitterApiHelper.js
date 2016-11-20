@@ -1,5 +1,6 @@
 // Twitter API Helper handles methods to access Twitter API endpoints
 // Rafal 'bl4de' Janicki | for @Nitro
+'use strict'
 
 const request = require('request-promise')
 const twitterAuthHelper = require('./twitterAuthHelper').TwitterAuthHelper

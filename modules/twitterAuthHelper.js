@@ -1,5 +1,6 @@
 // Authorization helper module for Nitro app
 // Rafal 'bl4de' Janicki | for @Nitro
+'use strict'
 
 const Base64 = require('base64-url')
 const request = require('request-promise')

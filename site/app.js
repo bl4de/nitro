@@ -40,15 +40,15 @@ const NitroTwitterApp = {
      * @param {HTMLElement} parentElement parent element for tweets
      */
     appendTweet(tweet) {
-        let tweet_content = document.createElement('div')
-        tweet_content.classList = 'tweet-content'
+        let tweetContent = document.createElement('div')
+        tweetContent.classList = 'tweet-content'
 
-        tweet_content.innerHTML = `
+        tweetContent.innerHTML = `
         <h5>\@${tweet.user.screen_name}</h5>
         <p>${tweet.text}</p>
         `
 
-        CONTENT.appendChild(tweet_content)
+        CONTENT.appendChild(tweetContent)
     },
 
     /**
@@ -89,6 +89,7 @@ const NitroTwitterApp = {
                     .then(tweets => this.parseTweets(tweets, username))
                     .catch(err => {
                         console.log(err)
+                        CONTENT.innerHTML = `<h5 class="no-tweets-found">No Tweets found, maybe <span class="username">${username}</span> does not exists?`
                     })
             }).catch(err => {
                 console.log(err)

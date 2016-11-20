@@ -5,6 +5,7 @@
  * I've used Express framework here'
  */
 // Rafal 'bl4de' Janicki | for @Nitro
+'use strict'
 
 
 // importing modules
