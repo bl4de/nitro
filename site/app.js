@@ -9,7 +9,9 @@ const searchBtn = document.getElementById('search')
 // default Twitter username to show tweets
 const DEFAULT_USERNAME = '@NitroHQ'
 
-
+// Twitter API keys
+const CONSUMER_KEY = 'XACJWHHw5g8ZzHHKhd53PBRmZ'
+const CONSUMER_SECRET = 'r6genB8ylAeoNcyFSxSqDkafa1WXyyhitkkZQSKugeyTOtD1kw'
 
 function getBearerToken() {
     const content = 'grant_type=client_credentials'

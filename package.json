@@ -9,6 +9,7 @@
   "author": "Rafal Janicki <bloorq@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2"
   }

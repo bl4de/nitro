@@ -1,14 +1,13 @@
-const http = require('http');
+const express = require('express')
+const app = express()
+const port = 21001
 
-const hostname = '127.0.0.1';
-const port = 3000;
+app.use(express.static('site'))
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World\n');
-});
+app.listen(port, (err) => {
+    if (err) {
+        return console.log('something bad happened', err)
+    }
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
+    console.log(`server is listening on ${port}`)
+})
