@@ -15,7 +15,6 @@
         "no-lone-blocks": 2,
         "no-redeclare": 2,
         "no-empty": 2,
-        "no-unreachable": 2,
-        "valid-jsdoc": 0
+        "no-unreachable": 2
     }
 }
