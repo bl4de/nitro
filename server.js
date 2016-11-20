@@ -24,6 +24,8 @@ app.use(express.static('site'))
 app.get('/fetch/:handle', (req, resp) => {
     twitterApiHelper.fetchUserTweets(req.params.handle).then(tweets => {
         resp.send(tweets)
+    }).catch(err => {
+        resp.send(JSON.stringify(err))
     })
 })
 

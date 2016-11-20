@@ -76,6 +76,10 @@ function fetchTweets(username = DEFAULT_USERNAME) {
     clearTweets()
     // fetch new tweets
     fetch('/fetch/' + username).then(result => {
-        result.json().then(tweets => parseTweets(tweets))
+        result.json()
+            .then(tweets => parseTweets(tweets))
+            .catch(err => {
+                console.log(err)
+            })
     })
 }
