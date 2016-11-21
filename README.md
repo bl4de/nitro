@@ -12,19 +12,19 @@ $ git clone https://github.com/bl4de/nitro.git
 With ```npm``` run the following command in the main directory of cloned repository:
 
 ```
-$ npm Install
+$ npm install
 ```
 
-With ```yarn``` execute following command:
+With ```yarn``` (recommended) execute following command:
 
 ```
 $ yarn
 ```
 
-Both commands create ```node_modules``` directory and install all required libraries.
+Any of those commands will create ```node_modules``` directory and install all required dependencies.
 
 
-#### Run server and enjoy the App
+#### Run server and enjoy the Nitro Twitter App
 
 In your command line execute following command:
 
