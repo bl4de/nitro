@@ -64,7 +64,16 @@ To run tests, simply run following command in command line:
 ```
 $ npm test
 ```
+#### Summary
 
+Unfortunately, CasperJS tests does not work correctly, because of a lot of ES6 features not implemented in PhantomJS yet. I should check this first on https://kangax.github.io/compat-table/es6/#phantom - I just missed this.
 
+I did not try proposed WebDriverJS because I am currently out of time for this coding test.
+
+If it's possible I can provide tests based on WebDriverJS later this week.
+
+Thanks again for this great coding exercise - it was really fun even if I did not do it well enough :)
+
+Rafal Janicki
 
 
