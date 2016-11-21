@@ -1,6 +1,22 @@
 ## Nitro Twitter App
 
-### Installation
+## About
+
+This is my implementation of Nitro F/E Developer Homework Assignment.
+
+Application is working correctly in latest Firefox, Chrome, Chromium and Opera browsers.
+
+It's not working in Safari because of no Fetch API implemented in WebKit.
+I did not test it in IE/Edge
+
+Dev stack (tools, libraries) I've used includes:
+
+- Express 4.14, nodemon, eslint, Node 6.9.1, npm 4.0.3, yarn 0.17.5, Git 2.9.3 (Apple Git-75) (server-side)
+- Bootstrap 3.3.7, eslint, Chromium 57.0.2927.0 64bit (client-side)
+- Visual Studio Code (IDE)
+
+
+## Installation
 
 #### Clone repository into your local machine using:
 ```
@@ -36,9 +52,9 @@ Then, in your browser, open following address:
 
 http://127.0.0.1:21001/nitro.html
 
-### How to run tests
+## How to run tests
 
-I've used PhantomJS with CasperJS as I am already familiar with this set.
+I've used PhantomJS with CasperJS as I am already familiar with this set. Unfortunately, because of lot ES6 features I've used, I couldn't finish this part of Developer Homework Assignment.
 
 #### Download and install Phantom JS
 
@@ -64,7 +80,8 @@ To run tests, simply run following command in command line:
 ```
 $ npm test
 ```
-#### Summary
+
+## Summary
 
 Unfortunately, CasperJS tests does not work correctly, because of a lot of ES6 features not implemented in PhantomJS yet. I should check this first on https://kangax.github.io/compat-table/es6/#phantom - I just missed this.
 
