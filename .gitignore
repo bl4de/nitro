@@ -1,3 +1,4 @@
 site/dev/*
 node_modules/*
 npm-debug.log
+tests/screenshots/

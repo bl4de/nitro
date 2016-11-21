@@ -4,7 +4,7 @@
   "description": "Nitro Twitter application",
   "main": "server.js",
   "scripts": {
-    "test": "cd tests; casperjs casper-tests.js",
+    "test": "cd tests; casperjs test casper-tests.js",
     "start": "server.js"
   },
   "author": "Rafal Janicki <bloorq@gmail.com>",
