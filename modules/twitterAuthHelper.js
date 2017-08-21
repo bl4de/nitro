@@ -5,11 +5,6 @@
 const Base64 = require('base64-url')
 const request = require('request-promise')
 
-// Twitter API keys - in real life app those values should not be commited
-// I'm leaving them here just for convenience
-const CONSUMER_KEY = 'XACJWHHw5g8ZzHHKhd53PBRmZ'
-const CONSUMER_SECRET = 'r6genB8ylAeoNcyFSxSqDkafa1WXyyhitkkZQSKugeyTOtD1kw'
-
 const TwitterAuthHelper = {
 
     /**
